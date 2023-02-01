@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 # Create your views here.
-def index(request):
+def fileupload(request):
     return render(
         request,
-        'main_page/index.html',
+        'file_page/fileupload.html',
     )

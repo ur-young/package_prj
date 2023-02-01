@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .form-group {
+        position: relative; 
+        left: 50%; top: 50px; width: 95%; 
+        transform: translate(-50%, -50%); 
+        text-align: left;
+    }
+</style>
+
+<p> 
+    <form>
+        <!-- DB에서 송장번호 가져와서 출력 -->
+        <div class="form-group">
+            <div class="d-inline p-2 bg-dark text-white">
+                <label for="title">송장번호</label>
+            </div>
+            <div> 송장번호 from DB</div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="d-inline p-2 bg-dark text-white">
+                <label for="imgfile">이미지 업로드</label>
+            </div>
+            <input type="file" class="form-control" name= "imgfile" id="imgfile">
+        </div>
+        <br>
+        <br>
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-dark">제출</button>
+        </div>
+    </form>
+
+</p>
+{% endblock content %}
+
+</html>

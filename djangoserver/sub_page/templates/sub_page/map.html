@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<p> 
+  <!-- map -->
+  <div id="map" style="width:360px;height:400px;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b9524bf0007b344da8818bd6b19a52b8"></script>
+	<script>
+		// JSON 파싱방법: https://ssungkang.tistory.com/entry/Django-jsonscript-%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%9A%A8%EA%B3%BC%EC%A0%81%EC%9D%B8-son-parsing
+		// JSON 파싱방법: https://moondol-ai.tistory.com/133  
+		var gps = JSON.parse("{{ gpsJson | escapejs  }}");  
+
+		   var mapContainer = document.getElementById('map'), // 지도를 표시할 div   
+		  
+		   mapOption = {
+				   center: new kakao.maps.LatLng(gps['1lat'], gps['1log']), // 지도의 중심좌표 37.5177493, 126.88545   gps['lat'], gps['lot']
+				   level: 3 // 지도의 확대 레벨
+				};  
+
+		   var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		   
+			// 참고: https://apis.map.kakao.com/web/documentation/#MarkerImage
+				// 잠시
+			var markers =[];
+			if (gps['num']>=1){
+			for (var i = 1; i <= gps['num']; i++){
+				var marker = new kakao.maps.Marker({
+					position: new kakao.maps.LatLng(gps[i+'lat'], gps[i+'log'])
+				});
+				marker.setMap(map);
+				markers.push(marker);
+				}
+			}
+			function setMarkers(map) {
+				for (var i = 0; i < markers.length; i++) {
+					markers[i].setMap(map);
+				}            
+			}
+
+
+	</script>
+</p>
+{% endblock content %}
+
+</html>

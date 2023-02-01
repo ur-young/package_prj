@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<p> 
+<!-- DB table -->
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">운송장 번호</th>
+        <th scope="col">배송 주소</th>
+        <th scope="col">배송 확인</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <!-- 주소 일치 - 배송이 정확할 때 -->
+        <th scope="row"></th>
+        <td>123</td>
+        <td>서울특별시</td>
+        <td> <a class="btn btn-primary" href="#" role="button">완료</a> </td>
+      </tr>
+
+      <tr>
+        <!-- 주소 불일치 - 배송이 잘못 되었을 때 -->
+        <th scope="row"></th>
+        <td>123</td>
+        <td>서울특별시</td>
+        <td> <a class="btn btn-danger" href="#" role="button">오배송</a> </td>
+      </tr>
+
+      <tr>
+        <!-- 아직 배송하지 않았을 때 -->
+        <th scope="row"></th>
+        <td>123</td>
+        <td>서울특별시</td>
+        <td> <a class="btn btn-outline-dark" href="#" role="button">미배송</a> </td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+{% endblock content %}
+
+</html>
